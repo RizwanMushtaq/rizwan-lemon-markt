@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ManagerModule } from './manager/manager.module';
 import { InventoryModule } from './inventory/inventory.module';
 import { PosModule } from './pos/pos.module';
 import { UserModule } from './user/user.module';
@@ -23,7 +22,6 @@ import { MaterialModule } from './material.module';
     HttpClientModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    ManagerModule,
     InventoryModule,
     PosModule,
     UserModule,
