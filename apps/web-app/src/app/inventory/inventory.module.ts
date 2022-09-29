@@ -8,6 +8,7 @@ import { InventoryHomeComponent } from './inventory-home/inventory-home.componen
 import { StockEntryComponent } from './stock-entry/stock-entry.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,6 @@ import { CategoriesComponent } from './categories/categories.component';
     ProductsComponent,
     CategoriesComponent,
   ],
-  imports: [CommonModule, InventoryRoutingModule, MaterialModule],
+  imports: [CommonModule, InventoryRoutingModule, MaterialModule, A11yModule],
 })
 export class InventoryModule {}
