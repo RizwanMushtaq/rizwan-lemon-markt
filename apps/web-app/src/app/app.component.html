@@ -1,13 +1,23 @@
 <mat-toolbar color="primary">
   <button mat-icon-button class="menu-button"><mat-icon>menu</mat-icon></button>
-  <mat-icon svgIcon="info"></mat-icon>
-  <a mat-button routerLink="/home">LemonMart</a>
+
+  <!--  <mat-icon svgIcon="info"></mat-icon>-->
+  <a mat-button class="logo-heading" routerLink="/home">LemonMart</a>
+
   <span class="spacer"></span>
   <button mat-icon-button>
-    <mat-icon>account_circle</mat-icon>
+    <mat-icon
+      routerLink="/user/profile"
+      matTooltip="Profile"
+      aria-label="Profile"
+    >
+      account_circle
+    </mat-icon>
   </button>
   <button mat-icon-button>
-    <mat-icon>lock_open</mat-icon>
+    <mat-icon routerLink="/user/logout" matTooltip="Logout" aria-label="Logout">
+      lock_open
+    </mat-icon>
   </button>
 </mat-toolbar>
 <router-outlet></router-outlet>
