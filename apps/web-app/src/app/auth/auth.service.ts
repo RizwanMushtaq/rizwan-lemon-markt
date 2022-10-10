@@ -13,6 +13,7 @@ import {
 import { IUser, User } from '../user/user/user';
 import jwtDecode from 'jwt-decode';
 import { transformError } from '../common/common';
+import { CacheService } from './cache.service';
 
 export interface IAuthStatus {
   isAuthenticated: boolean;
@@ -39,8 +40,10 @@ export interface IAuthService {
 }
 
 @Injectable()
-export abstract class AuthService implements IAuthService {
-  readonly authStatus$ = new BehaviorSubject<IAuthStatus>(defaultAuthStatus);
+export abstract class AuthService extends CacheService implements IAuthService {
+  readonly authStatus$ = new BehaviorSubject<IAuthStatus>(
+    this.getItem('authStatus') ?? defaultAuthStatus
+  );
   readonly currentUser$ = new BehaviorSubject<IUser>(new User());
 
   protected abstract authProvider(
@@ -49,6 +52,13 @@ export abstract class AuthService implements IAuthService {
   ): Observable<IServerAuthResponse>;
   protected abstract transformJwtToken(token: unknown): IAuthStatus;
   protected abstract getCurrentUser(): Observable<User>;
+
+  constructor() {
+    super();
+    this.authStatus$.pipe(
+      tap((authStatus) => this.setItem('authStatus', authStatus))
+    );
+  }
 
   login(email: string, password: string): Observable<void> {
     const loginResponse$ = this.authProvider(email, password).pipe(
