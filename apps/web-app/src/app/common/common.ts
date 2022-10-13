@@ -12,5 +12,6 @@ export function transformError(error: HttpErrorResponse | string) {
   } else if (error instanceof Error) {
     errorMessage = error.message;
   }
+  console.error(errorMessage);
   return throwError(() => errorMessage);
 }

@@ -45,8 +45,9 @@ export class InMemoryAuthService extends AuthService {
     email = email.toLowerCase();
 
     if (email.endsWith('@test.com')) {
+      console.log('Hallo');
       return throwError(
-        () => 'Failed to login! Email needs not to end with @test.com'
+        'Failed to login! Email needs not to end with @test.com'
       );
     }
 
